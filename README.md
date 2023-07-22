@@ -1,73 +1,86 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+<img src="https://img.shields.io/github/forks/Da4ndo/NestAuthFlow?label=Forks&color=lime&logo=githubactions&logoColor=lime">
+<img src="https://img.shields.io/github/stars/Da4ndo/NestAuthFlow?label=Stars&color=yellow&logo=reverbnation&logoColor=yellow">
+<img src="https://img.shields.io/github/license/Da4ndo/NestAuthFlow?label=License&color=808080&logo=gitbook&logoColor=808080">
+<img src="https://img.shields.io/github/issues/Da4ndo/NestAuthFlow?label=Issues&color=red&logo=ifixit&logoColor=red">
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# NestAuthFlow
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+A lightweight, secure, and efficient user authentication system built with Nest.js. This project showcases the usage of JSON Web Tokens (JWT) for maintaining user sessions, rate limiting to prevent potential abuse, and built-in data validation for user inputs with a focus on security and simplicity.
 
-## Description
+This project was built using Node.js v20.4.0.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Features
+
+- User Registration and Authentication
+- JWT Sessions
+- Data Validation
+
+## Planned Enhancements
+
+- Rate Limiting
+- CSRF Protection
+
+I tried using these things, but they didn't work very well and had some issues. So for now, I took them out.
+
+## Getting Started
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/en)
+
+- [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable)
 
 ## Installation
 
-```bash
-$ yarn install
-```
-
-## Running the app
+1. Clone the repository:
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+git clone https://github.com/Da4ndo/NestAuthFlow
 ```
 
-## Test
+2. Install the dependencies:
 
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+cd NestAuthFlow
+yarn install
 ```
 
-## Support
+3. Configure your environment variables:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Go in src/shared/ and open constants.ts. Change 'YOUR_SECRET' to your own secret:
 
-## Stay in touch
+```ts
+export const JWT_SECRET = 'YOUR_SECRET';
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+4. Start the server:
 
-## License
+```bash
+npm run start:dev
+```
 
-Nest is [MIT licensed](LICENSE).
+Your server should now be running at **`http://localhost:3000`**.
+
+## Usage
+
+Here are some example endpoints that you can try:
+
+- **Register a new user**: Send a POST request to http://localhost:3000/users with a JSON body containing the username and password.
+
+- **Login**: Send a POST request to http://localhost:3000/auth/login with a JSON body containing your username and password. You will receive a JWT in response.
+
+- **Access Protected Route**: Send a GET request to http://localhost:3000/administration with the JWT token you received in the Authorization header.
+
+> To test calls to my api, I personally use the Thunder Client vscode plugin.
+
+## Learn More About Nest.js
+
+To learn more about Nest.js, visit [Nest.js documentation](https://docs.nestjs.com/).
+
+# License
+
+This project is licensed under the MIT License. See the **LICENSE** file for details.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
