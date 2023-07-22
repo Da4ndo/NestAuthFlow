@@ -1,7 +1,7 @@
-<img src="https://img.shields.io/github/forks/Da4ndo/NestAuthFlow?label=Forks&color=lime&logo=githubactions&logoColor=lime">
-<img src="https://img.shields.io/github/stars/Da4ndo/NestAuthFlow?label=Stars&color=yellow&logo=reverbnation&logoColor=yellow">
-<img src="https://img.shields.io/github/license/Da4ndo/NestAuthFlow?label=License&color=808080&logo=gitbook&logoColor=808080">
-<img src="https://img.shields.io/github/issues/Da4ndo/NestAuthFlow?label=Issues&color=red&logo=ifixit&logoColor=red">
+![Forks](https://img.shields.io/github/forks/Da4ndo/NestAuthFlow?label=Forks&color=lime&logo=githubactions&logoColor=lime)
+![Stars](https://img.shields.io/github/stars/Da4ndo/NestAuthFlow?label=Stars&color=yellow&logo=reverbnation&logoColor=yellow)
+![License](https://img.shields.io/github/license/Da4ndo/NestAuthFlow?label=License&color=808080&logo=gitbook&logoColor=808080)
+![Issues](https://img.shields.io/github/issues/Da4ndo/NestAuthFlow?label=Issues&color=red&logo=ifixit&logoColor=red)
 
 # NestAuthFlow
 
