@@ -1,6 +1,6 @@
 {
   "name": "nestauthflow",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A lightweight, secure, and efficient user authentication system built with Nest.js. This project showcases the usage of JSON Web Tokens (JWT) for maintaining user sessions, rate limiting to prevent potential abuse, and built-in data validation for user inputs with a focus on security and simplicity.",
   "author": "Da4ndo <contact@da4ndo.com> (https://da4ndo.com)",
   "license": "MIT",
@@ -25,12 +25,16 @@
     "@nestjs/passport": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/throttler": "^4.2.1",
+    "@nestjs/typeorm": "^10.0.0",
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "sqlite3": "^5.1.6",
+    "typeorm": "^0.3.17"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
