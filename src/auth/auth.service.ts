@@ -10,20 +10,23 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async login(username: string, password: string) {
-    const user = this.userService.findOne(username);
-
+  async login(usernameOrEmail: string, password: string) {
+    const userByUsername = await this.userService.findByUsername(usernameOrEmail);
+    const userByEmail = await this.userService.findByEmail(usernameOrEmail);
+  
+    const user = userByUsername || userByEmail;
+  
     if (!user) {
       return { status: HttpStatus.UNAUTHORIZED, message: 'Invalid login credentials' };
     }
-
-    const isValid = await this.userService.validatePassword(username, password);
-
+  
+    const isValid = await this.userService.validatePassword(user.username, password);
+  
     if (!isValid) {
       return { status: HttpStatus.UNAUTHORIZED, message: 'Invalid login credentials' };
     }
-
-    const payload = { username };
+  
+    const payload = { username: user.username };
     return {
       status: HttpStatus.OK,
       message: 'Login successful',

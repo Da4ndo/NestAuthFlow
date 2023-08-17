@@ -8,11 +8,15 @@ export class AuthController {
 
   @Post('login')
   async login(
-    @Body('username') username: string,
+    @Body('usernameOrEmail') usernameOrEmail: string,
     @Body('password') password: string,
     @Res() res: Response,
   ) {
-    const result = await this.authService.login(username, password);
+    if (!usernameOrEmail || !password) {
+      return res.status(HttpStatus.BAD_REQUEST).json({ message: 'Missing required credentials.' });
+    }
+
+    const result = await this.authService.login(usernameOrEmail, password);
 
     if (result.status !== HttpStatus.OK) {
       return res.status(result.status).json({ message: result.message });

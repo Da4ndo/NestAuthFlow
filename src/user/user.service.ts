@@ -1,54 +1,64 @@
-import { Injectable } from '@nestjs/common';
-import { readFileSync, writeFileSync } from 'fs';
-import { HttpException, HttpStatus } from '@nestjs/common';
-import { join } from 'path';
+import { Injectable, HttpStatus } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { User } from './user.entity'; // Adjust the path accordingly
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
-  private readonly usersFile = join(__dirname, 'users.json');
+  constructor(
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+  ) {}
 
-  async create(username: string, password: string) {
-    const existingUser = this.findOne(username);
+  async create(username: string, password: string, email: string) {
+    const existingUser = await this.findOne(username);
 
     if (existingUser) {
       return { status: HttpStatus.BAD_REQUEST, message: 'User already exists' };
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = { username, password: hashedPassword };
+    const newUser = this.userRepository.create({
+      username,
+      password: hashedPassword,
+      email,
+    });
 
-    const users = this.findAll();
-    users.push(newUser);
+    await this.userRepository.save(newUser);
 
-    writeFileSync(this.usersFile, JSON.stringify(users));
-
-    return { status: HttpStatus.CREATED, message: 'User created successfully', user: newUser };
+    return {
+      status: HttpStatus.CREATED,
+      message: 'User created successfully',
+      user: newUser,
+    };
   }
 
-  findAll() {
-    try {
-      const users = readFileSync(this.usersFile, 'utf8');
-      return JSON.parse(users);
-    } catch (e) {
-      return [];
-    }
+  async findAll(): Promise<User[]> {
+    return this.userRepository.find();
   }
 
-  findOne(username: string) {
-    const users = this.findAll();
-    return users.find(user => user.username === username);
+  async findOne(username: string): Promise<User | undefined> {
+    return this.userRepository.findOne({ where: { username } });
   }
 
-  async validatePassword(username: string, password: string) {
-    const user = this.findOne(username);
+  async findByUsername(username: string) {
+    return this.userRepository.findOne({ where: { username } });
+  }
+  
+  async findByEmail(email: string) {
+    return this.userRepository.findOne({ where: { email } });
+  }
+  
+
+  async validatePassword(username: string, password: string): Promise<boolean> {
+    const user = await this.findOne(username);
 
     if (!user) {
       return false;
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
-
     return isMatch;
   }
 }

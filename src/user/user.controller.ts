@@ -10,9 +10,14 @@ export class UserController {
   async create(
     @Body('username') username: string,
     @Body('password') password: string,
+    @Body('email') email: string,
     @Res() res: Response,
   ) {
-    const result = await this.userService.create(username, password);
+    if (!username || !password || !email) {
+      return res.status(HttpStatus.BAD_REQUEST).json({ message: 'Username, password, and email are required.' });
+    }
+
+    const result = await this.userService.create(username, password, email);
 
     if (result.status !== HttpStatus.CREATED) {
       return res.status(result.status).json({ message: result.message });
