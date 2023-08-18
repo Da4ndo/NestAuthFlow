@@ -14,6 +14,7 @@ This project was built using Node.js v20.4.0.
 - User Registration and Authentication
 - JWT Sessions
 - Data Validation
+- Database usage with [**typeorm**](https://typeorm.io/)
 
 ## Planned Enhancements
 
@@ -21,6 +22,13 @@ This project was built using Node.js v20.4.0.
 - CSRF Protection
 
 I tried using these things, but they didn't work very well and had some issues. So for now, I took them out.
+
+## Changelog
+
+v1.1.0 - 18.08.2023:
+
+- Now can login with either username or email.
+- Uses database rather then users.json. (sqlite memory)
 
 ## Getting Started
 
@@ -47,29 +55,29 @@ yarn install
 
 3. Configure your environment variables:
 
-Go in src/shared/ and open constants.ts. Change 'YOUR_SECRET' to your own secret:
+Open .env and change 'YOUR_SECRET' to your own secret:
 
 ```ts
-export const JWT_SECRET = 'YOUR_SECRET';
+JWT_SECRET = 'YOUR_SECRET';
 ```
 
 4. Start the server:
 
 ```bash
-npm run start:dev
+yarn start:dev
 ```
 
-Your server should now be running at **`http://localhost:3000`**.
+Your server should now be running at **`http://localhost:4000`**.
 
 ## Usage
 
 Here are some example endpoints that you can try:
 
-- **Register a new user**: Send a POST request to http://localhost:3000/users with a JSON body containing the username and password.
+- **Register a new user**: Send a POST request to http://localhost:4000/users with a JSON body containing the username and password.
 
-- **Login**: Send a POST request to http://localhost:3000/auth/login with a JSON body containing your username and password. You will receive a JWT in response.
+- **Login**: Send a POST request to http://localhost:4000/auth/login with a JSON body containing your username and password. You will receive a JWT in response.
 
-- **Access Protected Route**: Send a GET request to http://localhost:3000/administration with the JWT token you received in the Authorization header.
+- **Access Protected Route**: Send a GET request to http://localhost:4000/administration with the JWT token you received in the Authorization header.
 
 > To test calls to my api, I personally use the Thunder Client vscode plugin.
 
