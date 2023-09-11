@@ -7,28 +7,32 @@
 
 A lightweight, secure, and efficient user authentication system built with Nest.js. This project showcases the usage of JSON Web Tokens (JWT) for maintaining user sessions, rate limiting to prevent potential abuse, and built-in data validation for user inputs with a focus on security and simplicity.
 
-This project was built using Node.js v20.4.0.
+This project was built using Node.js v20.5.1.
 
 ## Features
 
 - User Registration and Authentication
 - JWT Sessions
 - Data Validation
+- Rate Limiting
 - Database usage with [**typeorm**](https://typeorm.io/)
+- Environment-Specific .env Files
+- Added logging support
 
 ## Planned Enhancements
 
-- Rate Limiting
 - CSRF Protection
 
-I tried using these things, but they didn't work very well and had some issues. So for now, I took them out.
+> Research is underway to identify the best modern package for CSRF protection and how to effectively implement it.
 
 ## Changelog
 
-v1.1.0 - 18.08.2023:
+v1.2.0 - 11.09.2023:
 
-- Now can login with either username or email.
-- Uses database rather then users.json. (sqlite memory)
+- Environment-Specific .env Files
+- User Service Update and Increase
+- Added logging support
+- Rate Limiting
 
 ## Getting Started
 
@@ -61,10 +65,10 @@ Open .env and change 'YOUR_SECRET' to your own secret:
 JWT_SECRET = 'YOUR_SECRET';
 ```
 
-4. Start the server:
+4. Start the development server:
 
 ```bash
-yarn start:dev
+yarn dev
 ```
 
 Your server should now be running at **`http://localhost:4000`**.
@@ -73,7 +77,7 @@ Your server should now be running at **`http://localhost:4000`**.
 
 Here are some example endpoints that you can try:
 
-- **Register a new user**: Send a POST request to http://localhost:4000/users with a JSON body containing the username and password.
+- **Register a new user**: Send a POST request to http://localhost:4000/user/register with a JSON body containing the username and password.
 
 - **Login**: Send a POST request to http://localhost:4000/auth/login with a JSON body containing your username and password. You will receive a JWT in response.
 
