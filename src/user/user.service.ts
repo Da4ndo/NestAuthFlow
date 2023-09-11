@@ -90,7 +90,7 @@ export class UserService {
     return { status: HttpStatus.OK, message: 'User accepted successfully', user: user };
   }
 
-  async QueuePosition(userId): Promise<number> {
+  async QueuePosition(userId: number): Promise<number> {
     // Count all users with accepted set to false
     const allUsers = await this.userRepository.find({ where: { accepted: false }, order: { id: 'ASC' } });
     return allUsers.findIndex(user => user.id === userId);
@@ -100,7 +100,7 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  async findOne(username: string): Promise<User | undefined> {
+  async findOne(username: string): Promise<User | null> {
     return this.userRepository.findOne({ where: { username } });
   }
 

@@ -12,10 +12,14 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "preserveSymlinks": true,
+    "lib": ["ES2021"],
+    "moduleResolution": "node"
+  },
+  "exclude": ["node_modules", "dist"]
 }

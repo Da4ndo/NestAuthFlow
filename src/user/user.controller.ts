@@ -4,7 +4,7 @@ import { Response, Request } from 'express';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
 
-@Controller('users')
+@Controller('user')
 export class UserController {
   constructor(@Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger, private userService: UserService) {}
 
@@ -24,7 +24,7 @@ export class UserController {
     this.logger.info(`Register attempt for user: ${username}`, { ipv4: req.ip });
 
     if (!username || !password || !email) {
-      this.logger.warn(`Missing required credentials for user: ${username}`, { ipv4: req.ip });
+      this.logger.warn(`Missing required credentials: ${username}`, { ipv4: req.ip });
       return res.status(HttpStatus.BAD_REQUEST).json({ message: 'Username, password, and email are required.' });
     }
 
@@ -42,7 +42,7 @@ export class UserController {
 
     const { user, ...response } = result;
 
-    return res.status(response.status).json({ ...response, user: { usernmae: user.username, email: user.email } });
+    return res.status(response.status).json({ ...response, user: { usernmae: user?.username, email: user?.email } });
   }
 
   @Post("register/signup")
@@ -74,6 +74,6 @@ export class UserController {
 
     const { user, ...response } = result;
 
-    return res.status(response.status).json({ ...response, user: { usernmae: user.username, email: user.email } });
+    return res.status(response.status).json({ ...response, user: { usernmae: user?.username, email: user?.email } });
   }
 }
