@@ -14,4 +14,10 @@ export class User {
 
   @Column({ unique: true })
   email: string;
+
+  @Column({ nullable: true })
+  accepted: boolean;
+
+  @Column({ default: 'Free' }) // free, plus
+  plan: string;
 }
