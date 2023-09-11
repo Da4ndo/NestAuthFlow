@@ -1,0 +1,13 @@
+FROM node:latest
+
+WORKDIR /usr/src/app
+
+COPY src/package*.json ./
+
+COPY src/ .
+
+RUN npm install
+
+RUN npm run build
+
+CMD [ "npm", "run", "start:prod" ]
