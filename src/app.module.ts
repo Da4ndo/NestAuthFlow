@@ -1,5 +1,5 @@
 // DEFAULT IMPORT
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WinstonModule } from 'nest-winston';
@@ -50,8 +50,8 @@ const MODULE_IMPORTS = [AuthModule, UserModule];
         winston.format.errors({ stack: true }),
         winston.format.splat(),
         winston.format.json(),
-        winston.format.printf(({ level, message, timestamp, file, line }) => {
-          return `${timestamp} [${file}:${line}] ${level}: ${message}`;
+        winston.format.printf(({ level, message, timestamp, file, line, meta }) => {
+          return `${timestamp} IP: ${meta.ipv4} [${file}:${line}] ${level}: ${meta.status} ${message}`;
         }),
       ),
       transports: [
