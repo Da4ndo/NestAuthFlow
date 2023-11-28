@@ -9,7 +9,7 @@ A lightweight, secure, and efficient user authentication system built with Nest.
 
 This project was built using Node.js v20.5.1.
 
-## Features
+## 🚀 Features
 
 - User Registration and Authentication
 - JWT Sessions
@@ -19,13 +19,13 @@ This project was built using Node.js v20.5.1.
 - Environment-Specific .env Files
 - Added logging support
 
-## Planned Enhancements
+## 🚀 Planned Enhancements
 
 - CSRF Protection
 
 > Research is underway to identify the best modern package for CSRF protection and how to effectively implement it.
 
-## Changelog
+## 📜 Changelog
 
 v1.2.0 - 11.09.2023:
 
@@ -34,15 +34,15 @@ v1.2.0 - 11.09.2023:
 - Added logging support
 - Rate Limiting
 
-## Getting Started
+## 🛠️ Getting Started
 
-## Prerequisites
+### 📋 Prerequisites
 
 - [Node.js](https://nodejs.org/en)
 
 - [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable)
 
-## Installation
+### 🔧 Installation
 
 1. Clone the repository:
 
@@ -73,7 +73,7 @@ yarn dev
 
 Your server should now be running at **`http://localhost:4000`**.
 
-## Usage
+## 🛠️ Usage
 
 Here are some example endpoints that you can try:
 
@@ -85,14 +85,14 @@ Here are some example endpoints that you can try:
 
 > To test calls to my api, I personally use the Thunder Client vscode plugin.
 
-## Learn More About Nest.js
+## 📚 Learn More About Nest.js
 
 To learn more about Nest.js, visit [Nest.js documentation](https://docs.nestjs.com/).
 
-# License
+## 📝 License
 
 This project is licensed under the MIT License. See the **LICENSE** file for details.
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
