@@ -3,6 +3,16 @@
 ![License](https://img.shields.io/github/license/Da4ndo/NestAuthFlow?label=License&color=808080&logo=gitbook&logoColor=808080)
 ![Issues](https://img.shields.io/github/issues/Da4ndo/NestAuthFlow?label=Issues&color=red&logo=ifixit&logoColor=red)
 
+---
+
+> ⚠️ **Unmaintained Project**
+>
+> This repository is no longer actively maintained.  
+> The code remains available for reference and educational purposes,  
+> but no further updates, bug fixes, or support will be provided.
+
+---
+
 # NestAuthFlow
 
 A lightweight, secure, and efficient user authentication system built with Nest.js. This project showcases the usage of JSON Web Tokens (JWT) for maintaining user sessions, rate limiting to prevent potential abuse, and built-in data validation for user inputs with a focus on security and simplicity.
